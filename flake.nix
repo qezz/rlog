@@ -23,6 +23,7 @@
             erlang
             gleam
             rebar3
+            erlang-ls
           ];
         };
       }
