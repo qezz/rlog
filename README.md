@@ -82,6 +82,27 @@ rlog.info("in local time")
 
 For other options, see docs and public API in [config.gleam](src/rlog/config.gleam)
 
+Both `rlog` and `logging` libraries use Erlang's logger under the hood.
+If you use `logging` in your app, you can use `rlog` only for configuration
+purposes:
+
+```gleam
+import logging
+import rlog
+import rlog/config
+
+pub fn main() -> Nil {
+  config.default_with_local_ts()
+  |> rlog.configure()
+
+  logging.log(logging.Info, "Hello from logging")
+}
+```
+
+Don't forget to remove `logging.configure()`.
+
+See [example with `logging`](examples/with_other_libs/src/app.gleam) for more details.
+
 ## Development
 
 ```sh
