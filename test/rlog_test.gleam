@@ -9,14 +9,14 @@ pub fn main() -> Nil {
 }
 
 pub fn log_test() {
-  rlog.configure(config.default_with_ts())
+  rlog.configure(config.default_with_local_ts())
   rlog.log(level.Info, "simple :: hello info")
   rlog.warning("simple :: hello warning")
 }
 
 pub fn log_config_test() {
   let cfg =
-    config.default_with_ts()
+    config.default_with_local_ts()
     |> config.log_level(level.Info)
     |> config.without_ts()
     |> config.colored()
@@ -27,7 +27,7 @@ pub fn log_config_test() {
 
 pub fn log_config_utc_test() {
   let cfg =
-    config.default_with_ts()
+    config.default_with_local_ts()
     |> config.with_ts(config.Utc)
     |> config.colored()
 
@@ -37,7 +37,7 @@ pub fn log_config_utc_test() {
 
 pub fn log_config_local_test() {
   let cfg =
-    config.default_with_ts()
+    config.default_with_local_ts()
     |> config.with_ts(config.Local)
     |> config.colored()
 
@@ -47,7 +47,7 @@ pub fn log_config_local_test() {
 
 pub fn log_config_no_color_test() {
   let cfg =
-    config.default_with_ts()
+    config.default_with_local_ts()
     |> config.plain()
 
   rlog.configure(cfg)
@@ -55,7 +55,7 @@ pub fn log_config_no_color_test() {
 }
 
 pub fn log_set_level_test() {
-  rlog.configure(config.default_with_ts())
+  rlog.configure(config.default_with_local_ts())
   rlog.info(
     "set_level :: info (should be shown, but the next 'debug' line should not)",
   )
@@ -68,7 +68,7 @@ pub fn log_set_level_test() {
 }
 
 pub fn as_logging_test() {
-  config.default_with_ts()
+  config.default_with_local_ts()
   |> config.without_ts()
   |> rlog.configure()
 
@@ -76,7 +76,7 @@ pub fn as_logging_test() {
 }
 
 pub fn filters_test() {
-  config.default_with_ts()
+  config.default_with_local_ts()
   |> config.filters([
     filter.Domain(action: filter.Stop, compare: filter.Sub, match: [
       filter.PredefinedAtom(filter.Otp),

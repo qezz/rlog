@@ -5,7 +5,7 @@ import rlog/config/level
 
 pub fn main() -> Nil {
   let cfg =
-    config.default_with_ts()
+    config.default_with_local_ts()
     |> config.log_level(level.Info)
     |> config.with_ts(config.Utc)
     |> config.colored()
