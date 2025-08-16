@@ -11,6 +11,7 @@ pub fn main() -> Nil {
   |> config.colored()
   |> rlog.configure()
 
+  // Debugs won't be printed at this point
   rlog.info("Hello from rlog")
   rlog.debug("Hello from rlog DEBUG level")
   rlog.log(level.Debug, "Hello from rlog DEBUG level")
@@ -20,6 +21,7 @@ pub fn main() -> Nil {
 
   rlog.warning("Setting log level to DEBUG")
 
+  // Debugs will be printed after this
   rlog.set_level(level.Debug)
 
   rlog.info("Hello from rlog")
