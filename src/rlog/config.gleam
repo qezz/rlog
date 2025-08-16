@@ -10,21 +10,21 @@ pub type LogTimestamp {
 }
 
 pub type ColorSwitch {
-  WithColors
-  NoColors
+  Colored
+  Plain
 }
 
 pub fn is_colored(color: ColorSwitch) -> Bool {
   case color {
-    NoColors -> False
-    WithColors -> True
+    Plain -> False
+    Colored -> True
   }
 }
 
 pub fn color_enabled(b: Bool) -> ColorSwitch {
   case b {
-    True -> WithColors
-    False -> NoColors
+    True -> Colored
+    False -> Plain
   }
 }
 
@@ -32,7 +32,7 @@ pub type Config {
   Config(
     level: level.LogLevel,
     timestamp: Option(LogTimestamp),
-    output: ColorSwitch,
+    color: ColorSwitch,
     filter_default_action: filter.Action,
     filters: List(filter.Filters),
   )
@@ -43,7 +43,7 @@ pub fn default_no_ts() -> Config {
   Config(
     level: level.Info,
     timestamp: None,
-    output: WithColors,
+    color: Colored,
     filter_default_action: filter.Log,
     filters: filter.default_filters(),
   )
@@ -54,7 +54,7 @@ pub fn default_with_ts() -> Config {
   Config(
     level: level.Info,
     timestamp: Some(Local),
-    output: WithColors,
+    color: Colored,
     filter_default_action: filter.Log,
     filters: filter.default_filters(),
   )
@@ -73,11 +73,11 @@ pub fn without_ts(cfg: Config) -> Config {
 }
 
 pub fn colored(cfg: Config) -> Config {
-  Config(..cfg, output: WithColors)
+  Config(..cfg, color: Colored)
 }
 
 pub fn uncolored(cfg: Config) -> Config {
-  Config(..cfg, output: NoColors)
+  Config(..cfg, color: Plain)
 }
 
 pub fn filters(cfg: Config, filters: List(filter.Filters)) -> Config {

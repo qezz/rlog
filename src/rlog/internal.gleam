@@ -17,7 +17,7 @@ pub fn config_from_config(cfg: config.Config) -> InternalConfig {
   InternalConfig(
     level: cfg.level,
     timestamp: cfg.timestamp,
-    colored_output: config.is_colored(cfg.output),
+    colored_output: config.is_colored(cfg.color),
     filter_default_action: cfg.filter_default_action,
     filters: cfg.filters,
   )
