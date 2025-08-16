@@ -67,7 +67,7 @@ pub fn main() -> Nil {
 // INFO no timestamps here
 ```
 
-For timestamps in local time:
+For local timestamps (recommended):
 
 ```gleam
 config.default_with_local_ts()
@@ -80,19 +80,7 @@ rlog.info("in local time")
 // 2025-08-15T12:34:56 INFO in local time
 ```
 
-For timestamps in UTC:
-
-```gleam
-config.default_with_utc_ts()
-|> rlog.configure()
-
-rlog.info("always in UTC")
-
-// Sample output
-//
-// 2025-08-15T12:34:56Z INFO always in UTC
-```
-
+For other options, see docs and public API in [config.gleam](src/rlog/config.gleam)
 
 ## Development
 
