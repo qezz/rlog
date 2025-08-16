@@ -48,7 +48,7 @@ pub fn log_config_local_test() {
 pub fn log_config_no_color_test() {
   let cfg =
     config.default_with_ts()
-    |> config.uncolored()
+    |> config.plain()
 
   rlog.configure(cfg)
   rlog.info("no_color:: test (should be without color)")

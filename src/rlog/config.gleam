@@ -76,7 +76,7 @@ pub fn colored(cfg: Config) -> Config {
   Config(..cfg, color: Colored)
 }
 
-pub fn uncolored(cfg: Config) -> Config {
+pub fn plain(cfg: Config) -> Config {
   Config(..cfg, color: Plain)
 }
 
