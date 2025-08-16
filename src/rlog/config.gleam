@@ -1,4 +1,3 @@
-// import rlog
 import gleam/option.{type Option, None, Some}
 import rlog/config/filter
 import rlog/config/level
