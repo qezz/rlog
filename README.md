@@ -19,13 +19,13 @@ gleam add rlog@0
 import gleam/erlang/process
 import rlog
 import rlog/config
-import rlog/level
+import rlog/config/level
 
 pub fn main() -> Nil {
   let cfg =
-    config.default_config()
+    config.default_no_ts()
     |> config.log_level(level.Info)
-    |> config.with_ts(config.Utc)
+    |> config.with_ts(config.Local)
     |> config.colored()
 
   rlog.configure(cfg)
